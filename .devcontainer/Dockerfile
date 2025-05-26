@@ -9,4 +9,6 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && chsh -s /usr/bin/zsh node
 
+RUN npm install -g @anthropic-ai/claude-code
+
 # The Claude Code Dev Container Feature installs the @anthropic-ai/claude-code CLI automatically

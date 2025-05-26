@@ -8,18 +8,17 @@
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolderBasename},type=bind,consistency=cached",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "remoteUser": "node",                    // ← Changed here
-  "features": {
-    "ghcr.io/anthropics/devcontainer-features/claude-code:1.0.5": {}
-  },
   "customizations": {
-    "codespaces": {}
+    "codespaces": {},
+    "vscode": {
+      "settings": {
+        "terminal.integrated.shell.linux": "/usr/bin/zsh"
+      },
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+      ]
+    }
   },
-  "extensions": [
-    "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode"
-  ],
-  "settings": {
-    "terminal.integrated.shell.linux": "/usr/bin/zsh"
-  },
-  "postStartCommand": "claude code init && claude code server --port 3000"
+  "postStartCommand": "claude init"
 }
