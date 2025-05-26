@@ -1,0 +1,27 @@
+{
+  "name": "Claude Code Codespace",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+  "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:0-20",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolderBasename},type=bind,consistency=cached",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "remoteUser": "vscode",
+  "features": {
+    "ghcr.io/anthropics/devcontainer-features/claude-code:1.0.5": {}
+  },
+  "customizations": {
+    "codespaces": {
+      // Optionally, forward ports or set Codespaces-specific settings here
+    }
+  },
+  "extensions": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode"
+  ],
+  "settings": {
+    "terminal.integrated.shell.linux": "/usr/bin/zsh"
+  },
+  "postStartCommand": "claude code init && claude code server --port 3000"
+}
