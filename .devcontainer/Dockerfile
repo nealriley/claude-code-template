@@ -1,14 +1,12 @@
-# Use Microsoft’s official JavaScript/Node template for Dev Containers
+# Official VS Code Dev Containers Node 20 image (includes 'node' user)
 ARG VARIANT="20-bullseye"
 FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
 
-# Install Zsh and any other dev tools you prefer
+# Install Zsh, fzf, git, then set Zsh as the login shell for 'node'
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends zsh fzf git \
+    && apt-get install -y --no-install-recommends \
+         zsh fzf git \
     && rm -rf /var/lib/apt/lists/* \
-    && chsh -s /usr/bin/zsh vscode
+    && chsh -s /usr/bin/zsh node
 
-# (Optional) Install additional global npm tools here
-
-# The Claude Code Dev Container Feature will install the @anthropic-ai/claude-code CLI
-# No need to install it manually in the Dockerfile :contentReference[oaicite:6]{index=6} :contentReference[oaicite:7]{index=7}.
+# The Claude Code Dev Container Feature installs the @anthropic-ai/claude-code CLI automatically

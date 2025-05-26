@@ -4,17 +4,15 @@
     "dockerfile": "Dockerfile",
     "context": "."
   },
-  "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:0-20",
+  // Use the built-from-Dockerfile approach with the Node devcontainer base
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolderBasename},type=bind,consistency=cached",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-  "remoteUser": "vscode",
+  "remoteUser": "node",                    // ← Changed here
   "features": {
     "ghcr.io/anthropics/devcontainer-features/claude-code:1.0.5": {}
   },
   "customizations": {
-    "codespaces": {
-      // Optionally, forward ports or set Codespaces-specific settings here
-    }
+    "codespaces": {}
   },
   "extensions": [
     "dbaeumer.vscode-eslint",
